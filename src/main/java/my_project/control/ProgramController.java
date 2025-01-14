@@ -6,6 +6,7 @@ import my_project.Config;
 import my_project.model.Apple;
 import my_project.model.Pear;
 import my_project.model.Player;
+import my_project.model.Honeydew;
 
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
@@ -22,6 +23,7 @@ public class ProgramController {
     private Apple apple01;
     private Pear pear01;
     private Player player01;
+    private Honeydew honeydew01;
 
     /**
      * Konstruktor
@@ -49,6 +51,11 @@ public class ProgramController {
         pear01 = new Pear(xPos, yPos);
         viewController.draw(pear01);
 
+        xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
+        yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
+        honeydew01 = new Honeydew(xPos, yPos);
+        viewController.draw(honeydew01);
+
         player01 = new Player(50, Config.WINDOW_HEIGHT-100);
         viewController.draw(player01);
         viewController.register(player01);
@@ -66,6 +73,9 @@ public class ProgramController {
         }
         if(checkAndHandleCollision(pear01)){
             pear01.jumpBack();
+        }
+        if(checkAndHandleCollision(honeydew01)){
+            honeydew01.jumpBack();
         }
     }
     public boolean checkAndHandleCollision(GraphicalObject g0){

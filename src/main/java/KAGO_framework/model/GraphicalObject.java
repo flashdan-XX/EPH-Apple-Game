@@ -18,7 +18,9 @@ public class GraphicalObject implements Drawable {
     // Attribute: um Konstruktoraufrufzwang zu vermeiden wurden hier AUSNAHMSWEISE Startwerte gesetzt
     protected double x = 0, y = 0; // Die Koordinaten des Objekts
     protected double width = 0, height = 0; // Die rechteckige Ausdehnung des Objekts, wobei x/y die obere, linke Ecke angeben
-    protected double radius = 0; //Falls ein Radius gesetzt wurde (also größer als 0 ist), wird collidesWith angepasst.
+    protected double radius = 0;
+    protected double radiusX = 0;
+    protected double radiusY = 0; //Falls ein Radius gesetzt wurde (also größer als 0 ist), wird collidesWith angepasst.
 
     // Referenzen
     private BufferedImage myImage;
