@@ -13,17 +13,17 @@ public class Honeydew extends GraphicalObject {
         this.x = x;
         this.y = y;
         speed = 250;
-        radius = 50;
+        radius = 30;
         //radiusX = 40;
-        //radiusY = 30;
+        radiusY = 40;
     }
 
     @Override
     public void draw(DrawTool drawTool) {
         drawTool.setCurrentColor(255,255,0,255);
-        drawTool.drawFilledCircle(x,y,/*radiusX,radiusY*/radius);
+        drawTool.drawFilledEllipse(x,y,radius,radiusY);
         drawTool.setCurrentColor(209,134,0,255);
-        drawTool.drawCircle(x,y,/*radiusX,radiusY*/radius);
+        drawTool.drawEllipse(x,y,radius,radiusY);
     }
 
     @Override
