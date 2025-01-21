@@ -7,7 +7,7 @@ import my_project.model.Apple;
 import my_project.model.Pear;
 import my_project.model.Player;
 import my_project.model.Honeydew;
-
+import my_project.model.Fruit;
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
  * mit jeder Frame im laufenden Programm aufgerufen.
