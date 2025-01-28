@@ -27,5 +27,11 @@ public class Pear extends Fruit {
         y = 0;
         x = Math.random()*(Config.WINDOW_WIDTH);
     }
+
+    public void update(double dt){
+        super.update(dt);
+        x = Math.sin(0.01*y)*400+500;
+
+    }
 }
 
