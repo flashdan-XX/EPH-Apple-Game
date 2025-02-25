@@ -18,8 +18,10 @@ public class ProgramController {
     private ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
 
     private Apple apple01,apple02,apple03,apple04;
-    private Pear pear01,pear02,pear03,pear04;
+    private Pear pear01,pear02,pear03;
+    private PowerPear pear04;
     private Player player01;
+    private Player2 player02;
     private Honeydew honeydew01;
     private PowerApple powerApple01;
 
@@ -79,7 +81,7 @@ public class ProgramController {
 
         xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
         yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
-        pear04 = new Pear(xPos, yPos);
+        pear04 = new PowerPear(xPos, yPos);
         viewController.draw(pear04);
 
         xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
@@ -95,6 +97,10 @@ public class ProgramController {
         player01 = new Player(50, Config.WINDOW_HEIGHT-100);
         viewController.draw(player01);
         viewController.register(player01);
+
+        player02 = new Player2(50, Config.WINDOW_HEIGHT-100);
+        viewController.draw(player02);
+        viewController.register(player02);
     }
 
     /**
@@ -122,19 +128,33 @@ public class ProgramController {
         if(checkAndHandleCollision(pear03)){
             pear03.jumpBack();
         }
-        if(checkAndHandleCollision(pear04)){
+        if(checkAndHandleCollision(pear04, player01)){
             pear04.jumpBack();
+            player01.speed = player01.speed - pear04.speedNerf;
         }
-        if(checkAndHandleCollision(honeydew01)){
+        if(checkAndHandleCollision(pear04, player02)){
+            pear04.jumpBack();
+            player02.speed = player02.speed - pear04.speedNerf;
+        }
+        if(checkAndHandleCollision(honeydew01, player01)){
             honeydew01.jumpBack();
+            player01.speed = player01.speed + 150;
         }
-        if(checkAndHandleCollision(powerApple01)){
+        if(checkAndHandleCollision(honeydew01, player02)){
+            honeydew01.jumpBack();
+            player01.speed = player01.speed + 150;
+        }
+        if(checkAndHandleCollision(powerApple01, player01)){
             powerApple01.jumpBack();
             player01.speed = player01.speed + powerApple01.speedBuff;
         }
+        if(checkAndHandleCollision(powerApple01, player02)){
+            powerApple01.jumpBack();
+            player02.speed = player02.speed + powerApple01.speedBuff;
+        }
     }
-    public boolean checkAndHandleCollision(GraphicalObject g0){
-        if(g0.collidesWith(player01)){
+    public boolean checkAndHandleCollision(GraphicalObject g0, Player player){
+        if(g0.collidesWith(player)){
             return true;
         }else{
             return false;

@@ -24,4 +24,8 @@ public class PowerApple extends Apple {
         y = 0;
         x = Math.random()*(Config.WINDOW_WIDTH);
     }
+
+    public double getSpeedBuff() {
+        return speedBuff;
+    }
 }

@@ -14,8 +14,8 @@ public class Player extends InteractiveGraphicalObject {
     private int points;
 
     //Tastennummern zur Steuerung
-    private int keyToGoLeft;
-    private int keyToGoRight;
+    protected int keyToGoLeft;
+    protected int keyToGoRight;
     private int direction;
 
     public Player(double x, double y){
