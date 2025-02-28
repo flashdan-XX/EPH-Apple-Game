@@ -5,6 +5,8 @@ import KAGO_framework.model.GraphicalObject;
 import my_project.Config;
 import my_project.model.*;
 
+import java.awt.event.KeyEvent;
+
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
  * mit jeder Frame im laufenden Programm aufgerufen.
@@ -20,8 +22,7 @@ public class ProgramController {
     private Apple apple01,apple02,apple03,apple04;
     private Pear pear01,pear02,pear03;
     private PowerPear pear04;
-    private Player player01;
-    private Player2 player02;
+    private Player player01,player02;
     private Honeydew honeydew01;
     private PowerApple powerApple01;
 
@@ -94,11 +95,11 @@ public class ProgramController {
         powerApple01 = new PowerApple(xPos, yPos);
         viewController.draw(powerApple01);
 
-        player01 = new Player(50, Config.WINDOW_HEIGHT-100);
+        player01 = new Player(50, Config.WINDOW_HEIGHT-100,KeyEvent.VK_A,KeyEvent.VK_D, 100, 80);
         viewController.draw(player01);
         viewController.register(player01);
 
-        player02 = new Player2(50, Config.WINDOW_HEIGHT-100);
+        player02 = new Player(50, Config.WINDOW_HEIGHT-100, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, 150, 80);
         viewController.draw(player02);
         viewController.register(player02);
     }
@@ -110,22 +111,40 @@ public class ProgramController {
     public void updateProgram(double dt){
         //TODO 08 Nachdem Sie die TODOs 01-07 erledigt haben: Setzen Sie um, dass im Falle einer Kollision (siehe TODO 06 bzw. 07) zwischen dem Spieler und dem Apfel bzw. dem Spieler und der Birne, die jumpBack()-Methode von dem Apfel bzw. der Birne aufgerufen wird.
         //Weitere TODOs folgen und werden im Unterricht formuliert. Spätestens nach TODO 08 sollte der Aufbau des Projekts durchdacht werden.
-        if(checkAndHandleCollision(apple02)){
+        if(checkAndHandleCollision(apple02, player01)){
             apple02.jumpBack();
         }
-        if(checkAndHandleCollision(apple03)){
+        if(checkAndHandleCollision(apple02, player02)){
+            apple02.jumpBack();
+        }
+        if(checkAndHandleCollision(apple03, player01)){
             apple03.jumpBack();
         }
-        if(checkAndHandleCollision(apple01)){
+        if(checkAndHandleCollision(apple03, player02)){
+            apple03.jumpBack();
+        }
+        if(checkAndHandleCollision(apple01, player01)){
             apple01.jumpBack();
         }
-        if(checkAndHandleCollision(pear01)){
+        if(checkAndHandleCollision(apple01, player02)){
+            apple01.jumpBack();
+        }
+        if(checkAndHandleCollision(pear01, player01)){
             pear01.jumpBack();
         }
-        if(checkAndHandleCollision(pear02)){
+        if(checkAndHandleCollision(pear01, player02)){
+            pear01.jumpBack();
+        }
+        if(checkAndHandleCollision(pear02, player01)){
             pear02.jumpBack();
         }
-        if(checkAndHandleCollision(pear03)){
+        if(checkAndHandleCollision(pear02, player02)){
+            pear02.jumpBack();
+        }
+        if(checkAndHandleCollision(pear03,player01)){
+            pear03.jumpBack();
+        }
+        if(checkAndHandleCollision(pear03,player02)){
             pear03.jumpBack();
         }
         if(checkAndHandleCollision(pear04, player01)){
@@ -138,11 +157,11 @@ public class ProgramController {
         }
         if(checkAndHandleCollision(honeydew01, player01)){
             honeydew01.jumpBack();
-            player01.speed = player01.speed + 150;
+            player01.width = player01.width - 30;
         }
         if(checkAndHandleCollision(honeydew01, player02)){
             honeydew01.jumpBack();
-            player01.speed = player01.speed + 150;
+            player02.width = player02.width + 30;
         }
         if(checkAndHandleCollision(powerApple01, player01)){
             powerApple01.jumpBack();

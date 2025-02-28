@@ -14,25 +14,29 @@ public class Player extends InteractiveGraphicalObject {
     private int points;
 
     //Tastennummern zur Steuerung
-    protected int keyToGoLeft;
-    protected int keyToGoRight;
+    private int keyToGoLeft;
+    private int keyToGoRight;
     private int direction;
-
-    public Player(double x, double y){
+    private double color;
+    public double width;
+    public double widthD;
+    public Player(double x, double y, int keyToGoLeft, int keyToGoRight, double color, double width) {
         this.x = x;
         this.y = y;
         speed = 150;
-        width = 80;
+        this.width = width;
         height = 40;
-
-        this.keyToGoLeft    = KeyEvent.VK_A;
-        this.keyToGoRight   = KeyEvent.VK_D;
+        this.color = color;
+        this.keyToGoLeft    = keyToGoLeft;
+                //KeyEvent.VK_A;
+        this.keyToGoRight   = keyToGoRight;
+                //KeyEvent.VK_D;
         this.direction      = -1; //-1 keine Bewegung, 0 nach rechts, 2 nach links
     }
 
     @Override
     public void draw(DrawTool drawTool) {
-        drawTool.setCurrentColor(157,152,3,255);
+        drawTool.setCurrentColor((int) color,152,3,255);
         drawTool.drawFilledRectangle(x,y,width,height);
         drawTool.setCurrentColor(0,0,0,255);
         drawTool.drawRectangle(x,y,width,height);
