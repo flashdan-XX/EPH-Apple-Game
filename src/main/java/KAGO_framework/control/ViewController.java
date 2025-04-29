@@ -3,7 +3,7 @@ package KAGO_framework.control;
 import KAGO_framework.Config;
 import KAGO_framework.view.DrawTool;
 //import KAGO_scenario_framework.control.ScenarioController;
-import my_project.control.ProgramController;
+import my_project.control.ProgramController; // Ensure this class exists and the package name is correct.
 import KAGO_framework.view.DrawFrame;
 import KAGO_framework.view.DrawingPanel;
 
@@ -88,7 +88,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
      * Startet das Programm, nachdem Vorarbeiten abgeschlossen sind.
      */
     private void startProgram(){
-        programController = new ProgramController(this);
+        programController = new ProgramController(this); // Ensure the constructor exists and is implemented correctly in ProgramController class.
         programController.startProgram();
         // Starte nebenlaeufigen Prozess, der Zeichnen und Animation uebernimmt
         lastLoop = System.nanoTime();
